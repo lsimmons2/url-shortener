@@ -4,7 +4,7 @@ from flask import request, redirect
 from . import app
 from . import db
 from models import Url
-from controller import encode, decode
+from controller import encode, decode, validate_url
 
 err_message = '''
 Please make sure are sending:
@@ -26,9 +26,16 @@ def shorten():
     except:
         return err_message, 400
 
+    if not true_url.startswith('http'):
+        true_url = 'http://%s' % true_url
+
     previous_url = Url.query.filter_by(true_url=true_url).first()
     if previous_url:
         return conflict_message % (encode(previous_url.id), true_url), 409
+
+    if not validate_url(true_url):
+        return '%s is an invalid URL.' % true_url, 400
+
 
     url = Url(true_url)
     db.session.add(url)

@@ -1,7 +1,10 @@
 
 from math import floor
+import httplib2
 
 base62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+
 
 def encode(id):
     base = base62
@@ -15,6 +18,7 @@ def encode(id):
         res = base[int(r)] + res
     return res
 
+
 def decode(code):
     b = 62
     base = base62
@@ -23,3 +27,13 @@ def decode(code):
     for i in xrange(limit):
         res = b * res + base.find(code[i])
     return res
+
+
+def validate_url(url):
+    h = httplib2.Http()
+    try:
+        resp = h.request(url, 'HEAD')
+        if resp[0].status == 200:
+            return True
+    except (httplib2.RelativeURIError, httplib2.ServerNotFoundError):
+        return False
