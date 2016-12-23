@@ -9,7 +9,6 @@ class Url(db.Model):
     Url Model:
         - id (int): primary key
         - true_url (str): original, unadultered url
-        - url_code (str): code used to create original url
         - created (datetime): time created
     '''
 
