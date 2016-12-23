@@ -5,7 +5,8 @@
 2. `cd url-shortener`
 3. `pip install -r requirements.txt`
 4. Make sure MySQL is running
-5. `python run.py`
+5. `source path/to/url-shortener/setup_db.sql;` in `msql` shell (or wherever you prefer to administer MySQL)
+6. `python run.py`
 
 <h4>Using</h4>
 POST to the `/shorten` endpoint with you url in form data:<br>
