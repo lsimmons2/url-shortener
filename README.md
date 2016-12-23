@@ -5,7 +5,7 @@
 2. `cd url-shortener`
 3. `pip install -r requirements.txt`
 4. Make sure MySQL is running
-5. `source path/to/url-shortener/setup_db.sql;` in `msql` shell (or wherever you prefer to administer MySQL)
+5. `source path/to/url-shortener/setup_db.sql;` in `mysql` shell (or wherever you prefer to administer MySQL)
 6. `python run.py`
 
 <h4>Using</h4>
